@@ -1294,8 +1294,11 @@ class TestKubeConfigLoader(BaseTestCase):
         expected = FakeConfig(host=TEST_HOST,
                               token=BEARER_TOKEN_FORMAT % TEST_DATA_BASE64)
         actual = FakeConfig()
-        tmp_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                                'tmp_file_path_test')
+        tmp_path = os.path.join(
+            os.path.dirname(
+                os.path.dirname(
+                    os.path.abspath(__file__))),
+            'tmp_file_path_test')
         load_kube_config_from_dict(config_dict=self.TEST_KUBE_CONFIG,
                                    context="simple_token",
                                    client_configuration=actual,
