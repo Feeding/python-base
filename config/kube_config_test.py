@@ -1290,7 +1290,7 @@ class TestKubeConfigLoader(BaseTestCase):
                                    client_configuration=actual)
         self.assertEqual(expected, actual)
 
-    def test_load_kube_config_from_dict_with_temp_files_path(self):
+    def test_load_kube_config_from_dict_with_temp_file_path(self):
         expected = FakeConfig(host=TEST_HOST,
                               token=BEARER_TOKEN_FORMAT % TEST_DATA_BASE64)
         actual = FakeConfig()
@@ -1299,7 +1299,7 @@ class TestKubeConfigLoader(BaseTestCase):
         load_kube_config_from_dict(config_dict=self.TEST_KUBE_CONFIG,
                                    context="simple_token",
                                    client_configuration=actual,
-                                   temp_files_path=tmp_path)
+                                   temp_file_path=tmp_path)
         self.assertEqual(expected, actual)
 
     def test_load_kube_config_from_empty_file_like_object(self):
