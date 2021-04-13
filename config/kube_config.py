@@ -122,7 +122,8 @@ class FileOrData(object):
                 self._file = _create_temp_file_with_content(
                     base64.standard_b64decode(content), self._temp_file_path)
             else:
-                self._file = _create_temp_file_with_content(self._data, self._temp_file_path)
+                self._file = _create_temp_file_with_content(
+                    self._data, self._temp_file_path)
         if self._file and not os.path.isfile(self._file):
             raise ConfigException("File does not exist: %s" % self._file)
         return self._file
