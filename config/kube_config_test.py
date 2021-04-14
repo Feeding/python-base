@@ -1302,6 +1302,7 @@ class TestKubeConfigLoader(BaseTestCase):
                                    client_configuration=actual,
                                    temp_file_path=tmp_path)
         self.assertFalse(True if not os.listdir(tmp_path) else False)
+        _cleanup_temp_files
 
     def test_load_kube_config_from_empty_file_like_object(self):
         config_file_like_object = io.StringIO()
