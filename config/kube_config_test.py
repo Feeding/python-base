@@ -1291,8 +1291,14 @@ class TestKubeConfigLoader(BaseTestCase):
         self.assertEqual(expected, actual)
 
     def test_load_kube_config_from_dict_with_temp_file_path(self):
-        expected = FakeConfig(host=TEST_HOST,
-                              token=BEARER_TOKEN_FORMAT % TEST_DATA_BASE64)
+        expected = FakeConfig(
+            host=TEST_SSL_HOST,
+            token=BEARER_TOKEN_FORMAT % TEST_DATA_BASE64,
+            cert_file=self._create_temp_file(TEST_CLIENT_CERT),
+            key_file=self._create_temp_file(TEST_CLIENT_KEY),
+            ssl_ca_cert=self._create_temp_file(TEST_CERTIFICATE_AUTH),
+            verify_ssl=True
+        )
         actual = FakeConfig()
         tmp_path = os.path.join(
             os.path.dirname(
