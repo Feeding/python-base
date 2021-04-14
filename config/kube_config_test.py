@@ -1298,7 +1298,7 @@ class TestKubeConfigLoader(BaseTestCase):
                     os.path.abspath(__file__))),
             'tmp_file_path_test')
         load_kube_config_from_dict(config_dict=self.TEST_KUBE_CONFIG,
-                                   context="simple_token",
+                                   context="ssl",
                                    client_configuration=actual,
                                    temp_file_path=tmp_path)
         self.assertEqual(True if not os.listdir(tmp_path) else False)
