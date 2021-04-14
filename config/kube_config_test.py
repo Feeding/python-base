@@ -1291,6 +1291,8 @@ class TestKubeConfigLoader(BaseTestCase):
         self.assertEqual(expected, actual)
 
     def test_load_kube_config_from_dict_with_temp_file_path(self):
+        expected = FakeConfig(host=TEST_HOST,
+                              token=BEARER_TOKEN_FORMAT % TEST_DATA_BASE64)
         actual = FakeConfig()
         tmp_path = os.path.join(
             os.path.dirname(
@@ -1302,6 +1304,7 @@ class TestKubeConfigLoader(BaseTestCase):
                                    client_configuration=actual,
                                    temp_file_path=tmp_path)
         self.assertFalse(True if not os.listdir(tmp_path) else False)
+        self.assertEqual(expected, actual)
         _cleanup_temp_files
 
     def test_load_kube_config_from_empty_file_like_object(self):
