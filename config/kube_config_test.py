@@ -1301,7 +1301,7 @@ class TestKubeConfigLoader(BaseTestCase):
                                    context="ssl",
                                    client_configuration=actual,
                                    temp_file_path=tmp_path)
-        self.assertEqual(True if not os.listdir(tmp_path) else False)
+        self.assertFalse(True if not os.listdir(tmp_path) else False)
 
     def test_load_kube_config_from_empty_file_like_object(self):
         config_file_like_object = io.StringIO()
